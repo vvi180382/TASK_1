@@ -29,8 +29,8 @@
 		RCC->APB2ENR |= RCC_AHBENR_GPIOAEN;									//включение тактирования выводов под UART					
 		RCC->APB2ENR |= RCC_APB2ENR_USART1EN;											//включение тактирования UART
 		GPIOA->MODER |= GPIO_MODER_MODER9_0;                         //А9 на выход для ТХ
-		GPIOA->MODER &=~ GPIO_MODER_MODER10_Msk;					//А10 на вход для ТХ
-		GPIOA->AFR[1] |= GPIO_AFRH_AFSEL9 | GPIO_AFRH_AFSEL10;       //альтернативные ф-ции пинов для UART  А9-RX, A10-TX
+		GPIOA->MODER &=~ GPIO_MODER_MODER10_Msk;					//А10 на вход для RХ
+		GPIOA->AFR[1] |= GPIO_AFRH_AFSEL9 | GPIO_AFRH_AFSEL10;       //альтернативные ф-ции пинов для UART  А9-ТX, A10-RX
 		GPIOA->OSPEEDR |= GPIO_OSPEEDER_OSPEEDR9_1;					//скорость пина ТХ 
 		GPIOA->PUPDR |= GPIO_PUPDR_PUPDR10_0;                       //подтягивание к "+" RX
 		USART1->BRR = (F_tact_USART / USART_bod)<<USART_BRR_DIV_MANTISSA_Pos;    //скорость шины
